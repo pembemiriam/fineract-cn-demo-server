@@ -324,14 +324,14 @@ public class ServiceRunner {
 
   private void startService(ExtraProperties properties, Microservice microservice) throws InterruptedException, IOException, ArtifactResolutionException {
     if (this.runInDebug) {
-      microservice.runInDebug();
+  //    microservice.runInDebug();
     }
     microservice.addProperties(properties);
     microservice.start();
     final boolean registered = microservice.waitTillRegistered(discoveryClient);
     logger.info("Service '{}' started and {} with Eureka.", microservice.name(), registered ? "registered" : "not registered");
     if (this.runInDebug) {
-      logger.info("Service '{}' started with debug port {}.", microservice.name(), microservice.debuggingPort());
+      logger.info("Service '{}' started with debug port {}.", microservice.name());
     }
     microservice.setApiFactory(this.apiFactory);
 
